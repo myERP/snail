@@ -54,7 +54,7 @@ class Snail
   end
 
   def self.home_country
-    @home_country ||= "US"
+    @home_country # ||= "US"
   end
 
   def self.home_country=(val)
@@ -152,7 +152,7 @@ class Snail
 
   def country_line
     if country and self.origin != country 
-      (translated_country(self.origin, country) || translated_country("US", country))
+      (translated_country(self.origin || "US", country) || translated_country("US", country))
     end
   end
 
