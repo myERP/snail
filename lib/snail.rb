@@ -25,7 +25,8 @@ class Snail
 
   # Store country as ISO-3166 Alpha 2
   def country=(val)
-    @country = Snail.lookup_country_iso(val)
+    @country = val
+    @country_iso = Snail.lookup_country_iso(val)
   end
 
   # Aliases for easier assignment compatibility
@@ -90,7 +91,7 @@ class Snail
   end
 
   def international?
-    country && self.origin != country
+    @country_iso && self.origin != @country_iso
   end
 
   def to_s(with_country: nil)
@@ -112,7 +113,7 @@ class Snail
   # this method will get much larger. completeness is out of my scope at this time.
   # currently it's based on the sampling of city line formats from frank's compulsive guide.
   def city_line
-    case country
+    case @country_iso
     when 'CN', 'IN'
       "#{city}, #{region}  #{postal_code}"
     when 'BR'
@@ -162,7 +163,8 @@ class Snail
   end
 
   def country_line
-    (translated_country(self.origin, @country) || translated_country("US", @country))
+    return @country if @country_iso.nil? 
+    (translated_country(self.origin, @country_iso) || translated_country("US", @country_iso))
   end
 
   def translated_country(origin, country)
