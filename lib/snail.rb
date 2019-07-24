@@ -126,7 +126,7 @@ class Snail
       "#{postal_code} #{city}-(#{region})"
     when 'US', 'CA', 'AU', nil, ""
       "#{city} #{region}  #{postal_code}"
-    when 'IL', 'DK', 'FI', 'FR', 'DE', 'GR', 'NO', 'ES', 'SE', 'TR', 'CY', 'PT', 'MK', 'BA'
+    when 'IL', 'DK', 'FI', 'FR', 'DE', 'GR', 'NO', 'ES', 'SE', 'TR', 'CY', 'PT', 'MK', 'BA', 'XK'
       "#{postal_code} #{city}"
     when 'KW', 'SY', 'OM', 'EE', 'LU', 'BE', 'IS', 'CH', 'AT', 'MD', 'ME', 'RS', 'BG', 'GE', 'PL', 'AM', 'HR', 'RO', 'AZ'
       "#{postal_code} #{city}"
